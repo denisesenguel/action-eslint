@@ -1,13 +1,14 @@
-name: linting
+name: warntest
 on: [pull_request]
 jobs:
   test:
 
+    name: run-warn-test
+
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
-
-      - name: log
-        run: echo "::debug::{a long message}"
 
       - name: warn
         run: echo "::warning file=review.sh,line=2,col=5::TestTest"
