@@ -2,9 +2,13 @@ name: linting
 on: [pull_request]
 jobs:
   test:
+
     steps:
       - uses: actions/checkout@v1
+
+      - name: log
+        run: echo "::debug::{a long message}"
+
       - name: warn
         run: echo "::warning file=review.sh,line=2,col=5::TestTest"
-
 
