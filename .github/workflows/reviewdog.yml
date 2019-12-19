@@ -1,19 +1,15 @@
-name: reviewdog
+name: warntest
 on: [pull_request]
 jobs:
-  eslint:
-    name: runner / eslint
+  test:
+
+    name: run-warn-test
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
-      - name: eslint-github-pr-check
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          eslint_flags: 'testdata/'
-      - name: eslint-github-pr-review
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          eslint_flags: 'testdata/'
+
+      - name: warn
+        run: echo "::warning file=review.sh,line=2,col=5::TestTest"
+
